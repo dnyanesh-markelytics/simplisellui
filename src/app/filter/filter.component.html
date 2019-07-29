@@ -1,0 +1,31 @@
+<div class="productfilter">
+
+  <p class="closefil">Back</p>
+
+  <h2 (click)="openOptions(1)"><a routerLink="/"><img src="assets/images/trending.png" width="25"><span style="margin-left: 10px;">Trending</span></a></h2>
+  <h2 (click)="openOptions(2)"><a routerLink="/"><img src="assets/images/maintenance.png" width="25"><span style="margin-left: 10px;">Categories</span></a></h2>
+
+  
+  <div  class="fbclidrop">
+    <h3 (click)="openOptions(3)"><img src="assets/images/store.png" width="25"><span style="margin-left: 10px;">Related Store</span>&nbsp;&nbsp;&#11167;</h3>
+    <ul [ngClass]="{'hide':!showStores,'show':showStores}"  class="relcon">
+      <li *ngFor="let store of stores"><label class="fbcBox">{{store.name}}<input (change)="searchProducts($event.target.checked,store)" type="checkbox"><span class="checkmark"></span></label></li>      
+    </ul>
+  </div>
+
+  
+  <div class="fbclidrop">
+    <h3 (click)="openOptions(4)"><img src="assets/images/maintenance.png" width="25"><span style="margin-left: 10px;">Related Category</span>&nbsp;&nbsp;&#11167;</h3>
+    <ul [ngClass]="{'hide':!showRelCategory,'show':showRelCategory}" class="relcon">
+      <!-- <li><label class="fbcBox">Mobile<input type="checkbox"><span class="checkmark"></span></label></li>
+      <li><label class="fbcBox">Laptop<input type="checkbox"><span class="checkmark"></span></label></li>
+      <li><label class="fbcBox">Refrigarator<input type="checkbox"><span class="checkmark"></span></label></li>
+      <li><label class="fbcBox">Mobile Accessories<input type="checkbox"><span class="checkmark"></span></label></li> -->
+      <li *ngFor="let category of categories">
+        <label (click)="searchProductsByCategory(category.category_id)" class="fbcBox">  <span>{{category.category_name}}</span>
+        </label>
+      </li>
+    </ul>
+    
+  </div>
+</div>

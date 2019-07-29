@@ -1,0 +1,123 @@
+<header class="ss-hd transition">
+    <nav class="navigationbar navigationbar-default">
+        <div class="sscontainer" id="navigationbar">
+            <div class="ss-lg">
+                <button class="ss-mn transition"><span class="a transition"></span> <span class="b transition"></span> <span class="c transition"></span> </button>
+                <ul class="ss-lst transition">
+                    <li class="transition">
+                        <a routerLink="/"> <img src="assets/images/logo.png"></a>
+                    </li> 
+
+                    <!-- <li class="transition">
+                        <div class="ss-ncnt">
+                        	
+                            <div class="ss-nctr">
+
+                                <ul class="ss-lst ss-tpm">
+                                    <li id="categories"> <span>Top categories</span></li>
+                                    <li><p class="closemn">Close</p></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li> -->
+
+                    <span *ngIf="isLoggedIn" class="profleinks openProfile" (mouseenter)="showProfileOptions=true;showLoginOptions=false">Profile
+                        <ul class="ptoplinks" *ngIf="showProfileOptions" (mouseleave)="showProfileOptions=false">
+                            <li><a routerLink="earnings">MyEarnings</a></li>
+                            <li><a routerLink="payments">Payments</a></li>
+                            <li><a routerLink="bankdetails">Bank Details</a></li>
+                            <li><a routerLink="missingprofit">Missing Profit</a></li>
+                            <li><a routerLink="account">Account Setting</a></li>
+                            <li class="showPointer" (click)="logout()"><a>LogOut</a></li>
+                        </ul>
+                    </span>
+                    
+                    <span *ngIf="!isLoggedIn" class="profleinks profleinkslog" (mouseenter)="showLoginOptions=true;showProfileOptions=false">Login
+                        <ul class="ptoplinks" *ngIf="showLoginOptions" (mouseleave)="showLoginOptions=false">
+                            <li><a routerLink="login">Login</a></li>
+                            <li><a routerLink="sign-up">Signup</a></li>
+                        </ul>
+                    </span>
+                    
+                </ul>
+            </div>
+
+            
+        </div>
+    </nav>
+
+    <div class="ss-sbmc transition">
+        <div class="sscontainer">
+            <div class="ss-ctm transition " id="categoriesnav">
+                <div class="ss-cbmn">
+                    
+                    <ul class="ss-lst">
+                        <li class="go-back-list">Go Back</li>
+                        <li>
+                            <div class="ss-smlk">
+                                <div class="ss-smhd">
+                                    <b> <a href="#" title="Travel Offers">Travel</a> </b>
+                                </div>
+                                <ul class="list-order">
+                                    <li> <a href="#" title="Flight Offers">Flight</a> </li>
+                                    <li> <a href="#" title="Bus Offers">Bus</a> </li>
+                                    <li> <a href="#" title="Hotel Offers">Hotel</a> </li>
+                                    <li> <a href="#" title="Cab Offers">Cab</a> </li>
+                                    <li> <a href="#" title="Car Rentals Offers">Car Rentals</a> </li>
+                                    <li> <a href="#" title="Domestic Flights Offers">Domestic Flights</a> </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="ss-smlk">
+                                <div class="ss-smhd">
+                                    <b> <a href="#" title="Recharge Offers">Recharge</a> </b>
+                                </div>
+                                <ul class="list-order">
+                                    <li><a href="#" title="Mobile Recharge Offers">Mobile Recharge</a></li>
+                                    <li><a href="#" title="Postpaid Bill Payments Offers">Postpaid Bill Payments</a></li>
+                                    <li><a href="#" title="Utility Bill Payments Offers">Utility Bill Payments</a></li>
+                                    <li> <a href="#" title="Data Card Recharge Offers">Data Card Recharge</a></li>
+                                    <li><a href="#" title="DTH Recharge Offers">DTH Recharge</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="ss-smlk">
+                                <div class="ss-smhd">
+                                    <b> <a href="#" title="Fashion Offers">Fashion</a> </b>
+                                </div>
+                                <ul class="list-order">
+                                    <li><a href="#" title="Women&#39;s Lifestyle Offers">Women&#39;s Lifestyle</a></li>
+                                    <li><a href="#" title="Men&#39;s Lifestyle Offers">Men&#39;s Lifestyle</a></li>
+                                    <li><a href="#" title="Kids Lifestyle Offers">Kids Lifestyle</a></li>
+                                    <li><a href="#" title="Footwear Offers">Footwear</a></li> 
+                                    <li><a href="#" title="Lingerie Offers">Lingerie</a></li> 
+                                    <li><a href="#" title="Fashion Accessories Offers">Fashion Accessories</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="ss-smlk">
+                                <div class="ss-smhd">
+                                    <b> <a href="#" title="Electronics Offers">Electronics</a> </b>
+                                </div>
+                                <ul class="list-order">
+                                    <li><a href="#" title="Mobile Offers">Mobile</a></li> 
+                                    <li><a href="#" title="Tablets Offers">Tablets</a></li> 
+                                    <li><a href="#" title="Laptops Offers">Laptops</a></li> 
+                                    <li><a href="#" title="Home Appliances Offers">Home Appliances</a></li>
+                                    <li><a href="#" title="Pen Drives Offers">Pen Drives</a></li> 
+                                    <li><a href="#" title="Mobile Accessories Offers">Mobile Accessories</a></li> 
+                                </ul> 
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,52 @@
+<section>
+    <div class="sscontainer">
+      <div class="signup">
+        <div class="signupsec">
+        
+          <div class="signupcon">
+            <h1>Hello</h1>
+          </div>
+  
+  
+          <div class="signupfields" id="loginform">
+            <h1>User Login</h1>
+              <p class="btn-danger">{{errorMessage}}</p>
+              <div class="signupform">
+                <div class="inputfield">
+                  <i class="fa fa-phone"></i>
+                  <input type="number" name="mobno" #mobno class="signinput" placeholder="Enter Your Mobile Number">
+                </div>
+                <div class="inputfield">
+                  <i class="fa fa-key"></i>
+                  <input type="password" name="password" #password class="signinput" placeholder="Enter Password">
+                </div>
+                <a href="#" style="margin-bottom: 10px;" onclick="gotoreset()">Forget Password?</a>
+                <div><button  name="login" class="signupbutton" (click)="logIn(mobno.value,password.value)">Login</button></div>
+                <p style="margin-top: 10px;">Not Registered? <span><a routerLink="/sign-up" style="color: #6A3AC0;">Signup Now</a></span></p>
+                
+              </div>
+            
+          </div>
+  
+  
+          <div class="signupfields" id="resetform">
+            <h1>Reset Password</h1>
+            
+              <div class="signupform">
+                <div class="inputfield">
+                  <i class="fa fa-envelope-o"></i>
+                  <input type="email" name="email" class="signinput" placeholder="Enter Your Email">
+                </div>
+                
+                <div><input type="submit" name="login" value="Get Password" class="signupbutton"></div>
+                <p style="margin-top: 10px;" onclick="gotologin()">Know Your Password? <span><a href="#" style="color: #6A3AC0;">Login Here</a></span></p>
+                
+              </div>
+            
+          </div>
+  
+  
+        </div>
+      </div>
+    </div>
+  </section>

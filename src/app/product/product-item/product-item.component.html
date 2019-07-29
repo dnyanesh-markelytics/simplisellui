@@ -1,0 +1,35 @@
+<div class="timelinebox timelineboxcat">
+  <div class="timelineboxCon">
+    <div class="productimg">
+      <img [src]="product.logo">
+    </div>
+    <div class="productitle">
+      <h4>{{product.name}}</h4>
+    </div>
+    <div class="pricenprofit">
+
+      <div class="price">
+        <div class="mrchntname"><img src="assets/images/flipkart_logo.jpg" width="50"></div>
+        <div class="orignalprice"><h2>₹ {{product.discount_price}}</h2></div>
+        <div class="discountprice"><del>₹{{product.original_price}}</del><span>({{product.profit}} OFF)</span></div>
+      </div>
+      <div class="shwcash">
+        <p>&#8377;&nbsp;{{product.profit}}</p>
+        <span>Your Profit</span>
+      </div>
+    </div>
+    <div class="sharenbuy">
+      <div class="buynow"><a target="_blank" href="{{product.buy_link}}"> Buy Now</a> </div>
+      <div class="share">
+      <p>Share</p>
+      <span class="tooltiptext">
+          <div class="sharebtns">
+            <div class="wpbtn"><img src="assets/images/facebook.png"></div>
+            <div class="fbbtn"><img src="assets/images/whatsapp.png"></div>
+            <div class="twbtn"><img src="assets/images/twitter.png"></div>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

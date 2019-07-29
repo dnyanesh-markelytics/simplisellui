@@ -1,0 +1,6 @@
+.verifyotp{
+    display:inline-block 
+} 
+.getotp {
+    display:none !important;
+}

@@ -1,0 +1,27 @@
+<section>
+	<div class="sscontainer">
+		<div class="catwiseprod">
+			<app-filter></app-filter>
+			<div class="catproducts">
+				<!-- <h1 style="margin-bottom: 10px; padding: 0 5px;">Electronics</h1> -->
+				<div class="popfilter">
+					<ul>
+						<li [ngClass]="{'popfilactive':order==='profit'}" class="showPointer" (click)="sortOnPrice('profit',true)" ><a>High Profit</a></li>
+						<li [ngClass]="{'popfilactive':order==='original_price' && orderBy ==true}" (click)="sortOnPrice('original_price',true)" class="showPointer"><a >High Price</a></li>
+						<li [ngClass]="{'popfilactive':order==='original_price' && orderBy ==false}" (click)="sortOnPrice('original_price',false)" class="showPointer"><a >Low Price</a></li>
+					</ul>
+				</div>
+
+				<div class="timeline">
+					<app-product-item 
+						*ngFor="let product of products | orderBy: order : orderBy " 
+						[product]="product">
+					</app-product-item>
+				</div>
+				<div *ngIf="!isavailable">
+					No Products available for Filter Criteria
+				  </div>
+			</div>
+		</div>
+	</div>
+</section>

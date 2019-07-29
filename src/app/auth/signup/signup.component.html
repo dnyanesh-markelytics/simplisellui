@@ -1,0 +1,84 @@
+<section>
+    <div class="sscontainer">
+      <div class="signup">
+        <div class="signupsec">
+          <div class="signupcon">
+            <h1>SignUp</h1>
+          </div>
+          <div [ngClass]="{'getotp': isSuccess && isFormSubmitted}" class="signupfields" id="getotp">
+            <h1>User SignUp</h1>
+            <p class="btn-danger">{{errorMessage}}</p>
+            <div class="signupform">
+              <form (ngSubmit)="onSubmitSignUp(f)" #f="ngForm" method="POST">
+              <div class="inputfield">
+                <i class="fa fa-user"></i>
+                <input type="text" required [(ngModel)]="name" name="name" class="signinput" placeholder="Enter Your Name" #name_user="ngModel" >
+                  <label *ngIf="name_user.invalid && (name_user.dirty || name_user.touched)"
+                      >
+                    <div class="error" *ngIf="name_user.errors.required">
+                      Name is required.
+                    </div>
+                  </label>
+              </div>
+              <div class="inputfield">
+                <i class="fa fa-envelope-o"></i>
+                <input type="email" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');"  required name="email_id" [(ngModel)]="email_id" class="signinput" placeholder="Enter Your Email" #email="ngModel">
+                <label *ngIf="email.invalid && (email.dirty || email.touched)"
+                      >
+                  <div class="error" *ngIf="email.errors.required">
+                    Email is required.
+                  </div>
+                </label>
+              </div>
+              <div class="inputfield">
+                <i class="fa fa-phone"></i><p style="position: absolute;top: 7px;left: 30px;">+91 |</p>
+                <input type="number" required name="contact_no" [(ngModel)]="contact_no" class="signinput" placeholder="Enter Your Mobile Number" style="padding-left: 75px;" #phone="ngModel" (change)="checkMobileNumber(phone.value,f)">
+                <label *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                      >
+                  <div class="error" *ngIf="phone.errors.required">
+                    Phone is required.
+                  </div>
+
+                  <div class="error" *ngIf="phone.errors.maxlength">
+                    Phone should be 10 Digit
+                  </div>
+                </label>
+              </div>
+              <div class="inputfield">
+                <i class="fa fa-key"></i>
+                <input type="password" required name="password" [(ngModel)]="password" class="signinput" placeholder="Set Password" #pwd=ngModel>
+                <label *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)"
+                      >
+                  <div class="error" *ngIf="pwd.errors.required">
+                    Password is required.
+                  </div>
+                </label>
+              </div>  
+              <button [disabled]="!f.valid" type="submit" name="submit" class="signupbutton" >Get OTP</button>
+              <p style="margin-top: 10px;">Already Registered? <span><a routerLink="/login" style="color: #6A3AC0;">Login Here</a></span></p>
+              </form>
+            </div>
+          </div>
+  
+  
+          <div [ngClass]="{'verifyotp':isSuccess && isFormSubmitted,'getotp':!isFormSubmitted}"  class="signupfields" id="verifyotp">
+            <h6>Enter the OTP sent to your registered mobile number</h6>
+              <p class="btn-danger">{{errorMessage}}</p>
+              <div class="signupform">
+                <form (ngSubmit)="onSubmitOTP(otpForm)" #otpForm="ngForm" >
+                <div id="divOuter">
+                  <div id="divInner">
+                    <input id="partitioned" name="otp" [(ngModel)]="otp" type="text" maxlength="4" />
+                    <input name="contact_no" [(ngModel)]="contact_no" type="hidden"  />
+                  </div>
+                </div>
+                <button type="submit" [disabled]="!otpForm.valid" class="signupbutton">Verify OTP</button>
+              </form>
+              </div>
+          </div>
+  
+  
+        </div>
+      </div>
+    </div>
+  </section>
