@@ -18,6 +18,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AuthService } from './auth/auth.service';
 import { from } from 'rxjs';
 import { HttpClientInterceptor } from './shared/httpClient.interceptor';
+import { ProfileService } from './profile/profile.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { HttpClientInterceptor } from './shared/httpClient.interceptor';
     OrderModule,
     FormsModule
   ],
-  providers: [HttpService,ProductService,AuthService,{provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true},],
+  providers: [ProfileService,HttpService,ProductService,AuthService,{provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true},],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

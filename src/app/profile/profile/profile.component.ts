@@ -1,0 +1,21 @@
+import { Component, OnInit } from '@angular/core';
+import { ProfileService } from '../profile.service';
+
+@Component({
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
+})
+export class ProfileComponent implements OnInit {
+
+  constructor(private profileService:ProfileService) { }
+  profits:any=[];
+  showProfit:boolean = true;
+  showWthDraw:boolean = false;
+  ngOnInit() {
+    this.profileService.getProfits().subscribe(data => {
+      this.profits = data.data;
+      console.log(this.profits);
+    });
+  }
+}

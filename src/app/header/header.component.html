@@ -23,11 +23,11 @@
 
                     <span *ngIf="isLoggedIn" class="profleinks openProfile" (mouseenter)="showProfileOptions=true;showLoginOptions=false">Profile
                         <ul class="ptoplinks" *ngIf="showProfileOptions" (mouseleave)="showProfileOptions=false">
-                            <li><a routerLink="earnings">MyEarnings</a></li>
-                            <li><a routerLink="payments">Payments</a></li>
-                            <li><a routerLink="bankdetails">Bank Details</a></li>
-                            <li><a routerLink="missingprofit">Missing Profit</a></li>
-                            <li><a routerLink="account">Account Setting</a></li>
+                            <li><a routerLink="/profile/profile">My Profits</a></li>
+                            <li><a routerLink="/profile/payments">Payments</a></li>
+                            <li><a routerLink="/profile/bank-details">Bank Details</a></li>
+                            <li><a routerLink="/profile/missing-profit">Missing Profit</a></li>
+                            <li><a routerLink="/profile/account-setting">Account Setting</a></li>
                             <li class="showPointer" (click)="logout()"><a>LogOut</a></li>
                         </ul>
                     </span>

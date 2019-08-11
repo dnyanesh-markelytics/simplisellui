@@ -1,0 +1,68 @@
+<section>
+	<div class="sscontainer">
+		<div class="brdcrmb">
+			<ol>
+				<li><a href="#">Home /</a></li>
+				<li><a href="#">Profits</a></li>
+			</ol>
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="sscontainer">
+		<h1 class="prohead">Your Profits</h1>
+		<div class="earnings">
+			<div class="usrearning">
+				 <h3>Total Profit</h3>
+				 <h2>&#8377;&nbsp; {{profits?.total_profit}}</h2>
+			</div>
+			<div class="usrearning">
+				 <h3>Validated Profit</h3>
+				 <h2>&#8377;&nbsp;{{profits?.validated_profit}}</h2>
+			</div>
+			<div class="usrearning">
+				 <h3>Paid Profit</h3>
+				 <h2>&#8377;&nbsp;{{profits?.paid}}</h2>
+			</div>
+			<div class="usrearning">
+				 <h3>Pending Profit</h3>
+				 <h2>&#8377;&nbsp;{{profits?.pending_profit}}</h2>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="sscontainer">
+		<div class="profile">
+			<app-left-menu></app-left-menu>
+			<div class="profiledetails">
+				<div class="myearnings">
+					<div class="earninghead">
+						<div [ngClass]="{'acearnhead':showProfit}" class="earnhead myprof acearnhead" (click)="showProfit = true;showWthDraw=false;"><h2>My Profits</h2></div>
+						<div [ngClass]="{'acearnhead':showWthDraw}" class="earnhead withdmny" (click)="showWthDraw = true;showProfit=false"><h2>Withdraw Money</h2></div>
+					</div>
+
+					<div [ngClass]="{'show':showProfit , 'hide':!showProfit}" class="earncont showmyprof">
+						<h4>Validated Profit</h4>
+						<br>
+						<h4>Rs. {{profits?.validated_profit}}</h4>
+						<br>
+						<a href="#" class="reqbtn">Request Missing cashback</a>
+					</div>
+
+					<div [ngClass]="{'show':showWthDraw , 'hide':!showWthDraw}" class="earncont showwithmny">
+						<h4>Validated Profit</h4>
+						<br>
+						<h4>Rs. {{profits?.validated_profit}}</h4>
+						<br>
+						
+						<button class="reqbtn">Withdraw Money</button>
+						<p>Minimun profit to withdraw money is Rs.100</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

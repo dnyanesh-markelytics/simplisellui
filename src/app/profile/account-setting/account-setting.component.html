@@ -1,0 +1,133 @@
+<section>
+	<div class="sscontainer">
+		<div class="brdcrmb">
+			<ol>
+				<li><a href="#">Home /</a></li>
+				<li><a href="#">Account</a></li>
+			</ol>
+		</div>
+	</div>
+</section>
+
+
+<div class="sscontainer">
+	<h1>Account Setting</h1>
+</div>
+
+
+<section>
+	<div class="sscontainer">
+		<div class="profile">
+			<app-left-menu></app-left-menu>
+			<div class="profiledetails">
+				<div class="myearnings">
+					<div class="profdetailhead"><h2>My Account</h2></div>
+					<div class="earncont">
+						<form (ngSubmit)="onSubmituserDetail(f)" #f="ngForm">
+							<p *ngIf="userformSubmit && errorMessage" class="btn-danger  p-3 m-3">{{errorMessage}}
+								<span class="float-right"><button type="button" (click)="errorMessage=''" class="close" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</span>
+							</p>
+							<p *ngIf="userformSubmit && successMessage" class="btn-success  p-3 m-3">{{successMessage}} 
+								<span class="float-right"><button type="button" (click)="successMessage=''" class="close" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</span>
+							</p>
+							<div class="bankdform">
+								<div class="bankinp">
+									<label>User ID</label>
+									<input [(ngModel)]="userDetails.user_id" type="text" name="id" class="bankinput" disabled value="{{userDetails.user_id}}">
+									<input  type="hidden" name="user_id" [(ngModel)]="userDetails.user_id" class="bankinput" value="{{userDetails.user_id}}">
+								</div>
+								<div class="bankinp">
+									<label>Full Name</label>
+									<input required [(ngModel)]="userDetails.name" type="text" name="name" class="bankinput" #fname="ngModel" >
+									<label *ngIf="fname.invalid && fname.touched">
+										<div class="text-danger" *ngIf="fname.errors.required">
+											Name is required
+										</div>
+									</label>
+								</div>
+								<div class="bankinp">
+									<label>Email Address</label>
+									<input   type="text" name="emailadd" class="bankinput" disabled value="{{userDetails.email_id}}">
+								</div>
+								<div class="bankinp">
+									<label>Mobile Number</label>
+									<input type="number" name="mobileno" class="bankinput" disabled value="{{userDetails.contact_no}}">
+								</div>
+								<div class="bankinp" style="width: 100%;"><button type="submit" [disabled]="!f.valid" class="bankbtn">Submit</button></div>
+								
+
+                                <p style="font-size: 1rem;">Note: To Change Email Please write Us to <span><a style="color: #6A3AC0;" href="mailto:contact@simplisell.com">contact@simplisell.com</a></span></p>
+							</div>
+						</form>
+					</div>
+				</div>
+
+
+                <div class="myearnings">
+                    <div class="profdetailhead"><h2>Change Password</h2></div>
+                    <div class="earncont">
+                        <form (ngSubmit)="resetPassword(changePwdFrm)" #changePwdFrm="ngForm">
+								{{changePwdFrm.submit}}
+                            <div class="bankdform">
+								<p *ngIf="resetformSubmit && errorMessage != ''" class="btn-danger  p-3 m-3">{{errorMessage}}
+									<span class="float-right"><button type="button" (click)="errorMessage=''" class="close" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+										</button>
+									</span>
+								</p>
+								<p *ngIf="resetformSubmit && successMessage != ''" class="btn-success  p-3 m-3">{{successMessage}} 
+									<span class="float-right"><button type="button" (click)="successMessage=''" class="close" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									  </button>
+									</span>
+								</p>
+                                <div class="bankinp pwdinp">
+                                    <label>Old Password<span>*</span></label>
+									<input required type="text" name="uid" class="bankinput" name='old_password' [(ngModel)]="old_password" #old_pwd="ngModel">
+									<input  type="hidden" name="user_id" [(ngModel)]="userdata.user_id" class="bankinput" value="{{userdata.user_id}}">
+									<label *ngIf="old_pwd.invalid && old_pwd.touched">
+										<div class="text-danger" *ngIf="old_pwd.errors.required">
+											Old Password is required
+										</div>
+									</label>
+                                </div>
+                                <div class="bankinp pwdinp">
+                                    <label>New Password<span>*</span></label>
+									<input  pattern="{{cpwd.value}}" type="text"  required [(ngModel)]="userdata.password" class="bankinput" name="password"  #pwd="ngModel">
+									
+									<label *ngIf="pwd.invalid && pwd.touched">
+										<div class="text-danger" *ngIf="pwd.errors.pattern">
+											Password does not match with Confirm password
+										</div>
+										<div class="text-danger" *ngIf="pwd.errors.required">
+											New Password is required
+										</div>
+									</label>
+                                </div>
+                                <div class="bankinp pwdinp">
+                                    <label>Confirm Password<span>*</span></label>
+									<input pattern="{{pwd.value}}" required type="text" required class="bankinput" name="confirm_password" [(ngModel)]="userdata.confirm_password"  #cpwd="ngModel">
+									<label *ngIf="cpwd.invalid && cpwd.touched">
+										<div class="text-danger" *ngIf="cpwd.errors.pattern">
+											Password does not match with New Password
+										</div>
+										<div class="text-danger" *ngIf="cpwd.errors.required">
+											Confirm Password is required
+										</div>
+									</label>
+								</div>
+                                <div class="bankinp pwdinp" style="width: 100%;"><button [disabled]="!changePwdFrm.valid" type="submit" class="bankbtn">Submit</button></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</section>

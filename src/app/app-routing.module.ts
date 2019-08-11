@@ -10,6 +10,10 @@ const routes: Routes = [
   {path:'products',component:ProductComponent},
   {path:'login',component:SigninComponent,canActivate:[RouteGuard]},
   {path:'sign-up',component:SignupComponent},
+  {
+    path:"profile",
+    loadChildren :() => import('./profile/profile.module').then(mod => mod.ProfileModule)
+  },
   {path:'**',redirectTo:'products'}
 ];
 

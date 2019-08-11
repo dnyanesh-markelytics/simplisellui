@@ -42,6 +42,7 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmitOTP(f){
+    console.log(f.value);
     this.errorMessage = '';
     this.authService.verifyOTP(f.value).subscribe((data)=>{
       this.isSuccessOTP = data.success;

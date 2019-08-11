@@ -1,0 +1,112 @@
+<section>
+	<div class="sscontainer">
+		<div class="brdcrmb">
+			<ol>
+				<li><a href="#">Home /</a></li>
+				<li><a href="#">Missing Profit</a></li>
+			</ol>
+		</div>
+	</div>
+</section>
+
+
+<div class="sscontainer">
+	<h1>Missing Profit</h1>
+</div>
+
+
+<section>
+	<div class="sscontainer">
+		<div class="profile">
+			<app-left-menu></app-left-menu>
+			<div class="profiledetails">
+				<div class="myearnings">
+					<div class="earninghead">
+              <div [ngClass]="{'acearnhead':showMissingProfitForm}" (click)="showMissingProfitForm = true;showRequest=false;"  class="earnhead missprofit "><h2>Request Missing Profit</h2></div>
+              <div [ngClass]="{'acearnhead':showRequest}" (click)="showMissingProfitForm = false;showRequest=true;"   class="earnhead missprofitreq"><h2>Your Requests</h2></div>
+          </div>
+					<div [ngClass]="{'show':showMissingProfitForm , 'hide':!showMissingProfitForm}"  class="earncont showmform">
+            <form (ngSubmit)="onSubmitMissingForm(f)" #f="ngForm" enctype="multipart/form-data" >
+              <p class="text-danger">{{errorMessage}}</p>
+							<div class="bankdform">
+								<div class="bankinp">
+									<label>Date Of Transaction<span>*</span></label>
+									<input required type="date" [(ngModel)]="missingFormData.order_date" name="order_date" class="bankinput form-control" #orderdate="ngModel" id="order_date">
+								</div>
+								<div class="bankinp">
+                  <label>Store You Shopped At<span>*</span></label>
+                  <select (change)="getProductListing(missingFormData.store_id)" required name="store_id" [(ngModel)]="missingFormData.store_id" class="bankinput form-control">
+                    <option value=""> Select Store</option>
+                    <option *ngFor="let key of stores" [value]="key.store_id">{{ key.name }}</option>
+                  </select>
+									<!-- <input required type="text" name="fname" class="bankinput"> -->
+                </div>
+                <div class="bankinp" *ngIf="missingFormData.store_id">
+                    <label>Product You Shopped At Selected Store<span>*</span></label>
+                    <select  required name="product_id" [(ngModel)]="missingFormData.product_id" class="bankinput form-control">
+                      <option value=""> Select Product</option>
+                      <option *ngFor="let key of products" [value]="key.product_id">{{ key.name }}</option>
+                    </select>
+                    <!-- <input required type="text" name="fname" class="bankinput"> -->
+                  </div>
+								<div class="bankinp">
+									<label>Order Id/ Transaction ID<span>*</span></label>
+									<input required [(ngModel)]="missingFormData.transaction_id" type="text" name="transaction_id" class="bankinput form-control">
+								</div>
+                <div class="bankinp">
+                    <label>Sell Amount<span>*</span></label>
+                    <input required [(ngModel)]="missingFormData.sell_amount"  type="text" name="sell_amount" class="bankinput form-control">
+                </div>
+                <div class="bankinp" style="width: 100%">
+                    <label>Details Of Transaction<span>*</span></label>
+                    <textarea  [(ngModel)]="missingFormData.comments"  type="text" name="comments" class="bankinput form-control"></textarea>
+                </div>
+                <div class="bankinp">                     
+                  <label>Upload Attachment</label>
+                  <input required [(ngModel)]="missingFormData.file" id="fileUpload" class="fileUpload" type="file" (change)="detectFiles1($event)" name="files" class="form-control" />  
+                  <div *ngIf="isImageExist">
+                    <div class="validation-message">Required</div>
+                  </div>
+                </div>
+                <!-- <div class="bankinp">
+                    <label>Upload Attachment<span>*</span></label>
+                    <input required [(ngModel)]="missingFormData.file"  type="file" name="emailadd" class="bankinput form-control">
+                </div> -->
+								<div class="bankinp pwdinp" style="width: 100%;"><button [disabled]="!f.valid" type="submit" class="bankbtn">Submit</button></div>
+                  <h3>Note:</h3>
+                  <ul class="note">
+                      <li><p>1) Retailers do not accept Missing Tickets older than 10 days</p></li>
+                      <li><p>2) As these Missing Transactions are dealt with outside the usual payment process, Tickets may take 30-45 days to get resolved and show in your Earnings Account. Consequently confirmation period of Missing Transactions can also take longer than 90 days. Rest assured we will try our best to get your transaction approved as soon as possible. That’s when we earn too, so our incentives are always aligned with yours!</p></li>
+                      <li><p>3) While we shall try our best to resolve and get your Missing Cashback / Rewards approved, the retailer's decision is final in this regard</p></li>
+                  </ul>
+							</div>
+						</form>
+					</div>
+          <div [ngClass]="{'show':showRequest , 'hide':!showRequest}" class="earncont showmdetails" style="overflow-x: auto;">
+              <h1 *ngIf="requests.length == 0"> No request</h1>
+              <table *ngIf="requests.length > 0" class="table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Store</th>
+                    <th>Transaction Id</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let request of requests">
+                      <td>{{ request.order_date | date }}</td>
+                      <td>{{ request.name }}</td>
+                      <td>{{request.transaction_id}}</td>
+                      <td>Rs. {{ request.sell_amount }}</td>
+                      <td>{{ PROFIT_STATUS[request.status] }}</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

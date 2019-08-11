@@ -1,0 +1,89 @@
+<section>
+	<div class="sscontainer">
+		<div class="brdcrmb">
+			<ol>
+				<li><a href="#">Home /</a></li>
+				<li><a href="#">Bank Details</a></li>
+			</ol>
+		</div>
+	</div>
+</section>
+
+
+<div class="sscontainer">
+	<h1>Bank Details</h1>
+</div>
+
+
+<section>
+	<div class="sscontainer">
+		<div class="profile">
+			<app-left-menu></app-left-menu>
+			<div class="profiledetails">
+				<div class="myearnings">
+					<div class="profdetailhead"><h2>Bank Details</h2></div>
+					<div class="earncont">
+						<form (ngSubmit)="onSubmitBankDetail(f)" #f="ngForm" >
+							<div class="bankdform">
+								<div class="bankinp">
+									<label>Acc Holder Name<span>*</span></label>
+									<input [(ngModel)]="bankDetails.account_holder_name" type="text" name="accname" class="bankinput" #name="ngModel" required>
+									<label *ngIf="name.invalid && (name.dirty || name.touched)"
+										>
+										<div class="text-danger" *ngIf="name.errors.required">
+										Name is required.
+										</div>
+									</label>
+								</div>
+								<div class="bankinp">
+									<label>Account Number<span>*</span></label>
+									<input required #acc_num="ngModel" [(ngModel)]="bankDetails.account_number" type="number" name="accnumber" class="bankinput">
+									<label *ngIf="acc_num.invalid && (acc_num.dirty || acc_num.touched)"
+										>
+										<div class="text-danger" *ngIf="acc_num.errors.required">
+										Account Number is required.
+										</div>
+									</label>
+								</div>
+								<div class="bankinp">
+									<label>Bank Name<span>*</span></label>
+									<input required #bankname="ngModel" [(ngModel)]="bankDetails.bank_name" type="text" name="bankname" class="bankinput">
+									<label *ngIf="bankname.invalid && (bankname.dirty || bankname.touched)"
+										>
+										<div class="text-danger" *ngIf="bankname.errors.required">
+										Bank name is required.
+										</div>
+									</label>
+								</div>
+								<div class="bankinp">
+									<label>Branch<span>*</span></label>
+									<input  #branchname="ngModel" required [(ngModel)]="bankDetails.branch" type="text" name="branchname" class="bankinput">
+									<label *ngIf="branchname.invalid && (branchname.dirty || branchname.touched)"
+										>
+										<div class="text-danger" *ngIf="branchname.errors.required">
+										Branch is required.
+										</div>
+									</label>
+								</div>
+								<div class="bankinp">
+									<label>IFSC code<span>*</span></label>
+									<input required #ifscCode="ngModel" [(ngModel)]="bankDetails.ifsc" type="text" name="ifsc" class="bankinput">
+									<label *ngIf="ifscCode.invalid && (ifscCode.dirty || ifscCode.touched)"
+										>
+										<div class="text-danger" *ngIf="ifscCode.errors.required">
+										IFSC code is required.
+										</div>
+									</label>
+								</div>
+								<div class="bankinp" style="width: 100%;">
+									<button [disabled]="!f.valid" type="submit" class="bankbtn">Submit</button>
+								</div>
+								
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -20,7 +20,14 @@ export class AuthService{
     getUser(){
         return JSON.parse(localStorage.getItem('user'));
     }
-    
+    getToken(){
+        var user = this.getUser();
+        if(user != null){
+            return user.token;
+        }else{
+           return false;
+        }
+    }
     logIn(obj:any): Observable<any> {
         return this.http.postData(obj,'productsapi/login');
     }
